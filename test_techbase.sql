@@ -64,6 +64,7 @@ INSERT INTO `employee_team_ref` VALUES (2, 'MANAGER', 3, 2);
 INSERT INTO `employee_team_ref` VALUES (3, 'MANAGER', 4, 1);
 INSERT INTO `employee_team_ref` VALUES (4, 'MANAGER', 4, 2);
 
+SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE PROCEDURE dump_database(Id INT(11))
 BEGIN
@@ -74,10 +75,10 @@ Do
 	INSERT INTO `employee_team_ref` VALUES (Id, 'STAFF', Id , 1);
 	SET Id  = Id  + 1;
 end while;
-End
+End;
 
 call dump_database(10)
 
 
 
-SET FOREIGN_KEY_CHECKS = 1;
+
