@@ -1,0 +1,37 @@
+# all config, default mode dev
+# server
+server:
+    port: 8055
+spring:
+    jackson:
+        serialization:
+            FAIL_ON_EMPTY_BEANS: false
+    data:
+        web:
+            pageable:
+                max-page-size: 1500
+    profiles:
+        active: dev
+        include: no-swagger, no-liquibase
+    jpa:
+        show-sql: true
+        generate-ddl: false
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+    application:
+        name: techbase
+    datasource:
+        url: jdbc:mysql://localhost:3310/dump_techbase?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+
+logging:
+    level:
+        com.netflix: INFO
+    path: ""
+    pattern:
+        console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}%40M){cyan} %clr(:){faint} %m%n%wEx"
+        file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t] %-40.40logger{39}%40M : %m%n%wEx"
